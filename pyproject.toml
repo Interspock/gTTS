@@ -1,6 +1,6 @@
 [project]
 name = "gTTS"
-version = "2.5.1"
+version = "2.5.6"
 description = "gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API"
 authors = [{name = "Pierre Nicolas Durette", email = "pndurette@gmail.com"}]
 requires-python = ">=3.7"
@@ -58,9 +58,9 @@ docs = [
 gtts-cli = "gtts.cli:tts_cli"
 
 [project.urls]
-homepage = "https://github.com/pndurette/gTTS"
+homepage = "."
 documentation = "https://gtts.readthedocs.io"
-repository = "https://github.com/pndurette/gTTS"
+repository = "."
 changelog = "https://github.com/pndurette/gTTS/blob/main/CHANGELOG.md"
 
 [tool.setuptools.package-data]

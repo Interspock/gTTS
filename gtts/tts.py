@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
 import base64
 import json
 import logging
 import re
 import urllib
+import subprocess
 
 import requests
 
@@ -321,6 +323,7 @@ class gTTS:
                 "'fp' is not a file-like object or it does not take bytes: %s" % str(e)
             )
 
+
     def save(self, savefile):
         """Do the TTS API request and write result to file.
 
@@ -334,7 +337,12 @@ class gTTS:
         with open(str(savefile), "wb") as f:
             self.write_to_fp(f)
             f.flush()
-            log.debug("Saved to %s", savefile)
+            log.debug("Saved to %s", savefile)        
+            # Convert mp3 to wav
+            wav_file = savefile.replace('.mp3', '.wav')
+            subprocess.run(['ffmpeg','-y','-i', savefile, wav_file])
+            os.remove(savefile)
+            log.debug("Saved to %s", wav_file)
 
 
 class gTTSError(Exception):
